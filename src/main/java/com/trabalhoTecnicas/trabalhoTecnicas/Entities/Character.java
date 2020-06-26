@@ -15,7 +15,7 @@ public abstract class Character {
     protected int wisdom;
     protected int charisma;
     protected int level;
-    protected CHAR_TYPE ctype;
+    protected CHAR_TYPE type;
     protected Set<Party> parties = new HashSet<Party>();
 
 
@@ -26,9 +26,10 @@ public abstract class Character {
         this.intelligence = cb.getIntelligence();
         this.wisdom = cb.getWisdom();
         this.charisma = cb.getCharisma();
-        this.level = 1+(strength+dexterity+constitution+intelligence+wisdom+charisma)/50;
+        this.level = (strength+dexterity+constitution+intelligence+wisdom+charisma)/30;
         this.hp = calculateHP();
         this.mp = calculateMP();
+        this.type = cb.getType();
     }
 
     // Each class has different HP/MP calculations
@@ -94,7 +95,7 @@ public abstract class Character {
         return gold;
     }
     public CHAR_TYPE getType(){
-        return ctype;
+        return type;
     }
     public Inventory getInventory(){
         return inventory;

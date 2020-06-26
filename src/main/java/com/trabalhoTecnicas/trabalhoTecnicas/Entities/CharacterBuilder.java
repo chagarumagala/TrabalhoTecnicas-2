@@ -50,6 +50,10 @@ public class CharacterBuilder {
     }
 
     public Character returnCharacter() throws IllegalArgumentException{
+        if(type == null)
+        {
+            throw new IllegalArgumentException("Character must be of a class");
+        }
         switch(type){
             case CLERIC:
                 return new Cleric(this);
@@ -82,5 +86,11 @@ public class CharacterBuilder {
     public int getCharisma(){
         return charisma;
     }
-    
+    public CHAR_TYPE getType(){
+        return type;
+    }
+    public int getLevel()
+    {
+        return (strength+dexterity+constitution+intelligence+wisdom+charisma)/30;
+    }
 }
